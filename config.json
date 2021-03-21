@@ -1,0 +1,9 @@
+{
+  "listen": ":8180",
+  "compress": false,
+
+  "postUrl": "",
+  "apiKey": "",
+
+  "authorization": ""
+}
