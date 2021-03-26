@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/valyala/fasthttp"
+	"os"
 )
 
 type Metric struct {
@@ -30,14 +31,13 @@ func PostMetrics(url string, apikey string, metrics []Metric) {
 
 	res := fasthttp.AcquireResponse()
 	if err := fasthttp.Do(req, res); err != nil {
-		panic("handle error")
+		fmt.Fprintln(os.Stderr, err)
 	}
 	fasthttp.ReleaseRequest(req)
-
-	body := res.Body()
-
-	fmt.Println(string(body))
-	// Do something with body.
+	//
+	//body := res.Body()
+	//fmt.Println(string(body))
+	//Do something with body.
 
 	fasthttp.ReleaseResponse(res) // Only when you are done with body!
 }
